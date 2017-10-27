@@ -15,7 +15,7 @@
 
 ####  在主工程中有一个改类的子类复写类该方法，做了一些其他的逻辑，开发的时候为类方便把混淆关了直接关联工程开发。调试完毕之后开了混淆准备打包然后就build 失败。
 
-![0001]
+![0001](https://github.com/jackyZuo/ExceptionDemo/blob/master/images/0001.png)
 
 
 #### 根据提示判断是因为父类中的encryptParams（）方法未抛Exception，所以子类也不能抛。看代码确定是有throw Exception的，于是Module打出来的jar反编译下看看到底有没有。
@@ -24,33 +24,25 @@
 #### [JD-GUI](http://jd.benow.ca/)可以很方便的反编译jar包。使用AndroidStudio更方便直接把jar拖到libs下面，然后sync。
 
 
-![这里写图片描述](http://img.blog.csdn.net/20171027154417597?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3l6dW94eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 
-
-)
+![0002](https://github.com/jackyZuo/ExceptionDemo/blob/master/images/0002.png)
 
 
 #### 可以看到混淆后的代码
 
 
-![0003](http://img.blog.csdn.net/20171027154248862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3l6dW94eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 
-
-)
+![0003](https://github.com/jackyZuo/ExceptionDemo/blob/master/images/0003.png)
 
 
 #### 来一张对比的
 
-![0004](http://img.blog.csdn.net/20171027154328250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3l6dW94eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 
-
-)
+![0004](https://github.com/jackyZuo/ExceptionDemo/blob/master/images/0004.png)
 
 
 #### 对比发现混淆后的jar是没有throw Exception的，这里的gradle版本是1.5.0，仔细观察发现map的泛型也没有。
 
 #### 再来一张gradle 2.3.3 版本的(因为我Studio版本是2.3.3的)，有泛型没有throw Exception
 
-![0005](http://img.blog.csdn.net/20171027154347612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamFja3l6dW94eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast 
-
-)
+![0005](https://github.com/jackyZuo/ExceptionDemo/blob/master/images/0005.png)
 
 
 #### 最后放上三个对比的
