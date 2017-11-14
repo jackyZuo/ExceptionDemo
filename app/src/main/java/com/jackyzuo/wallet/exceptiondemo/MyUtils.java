@@ -1,6 +1,8 @@
 package com.jackyzuo.wallet.exceptiondemo;
 
 import com.jackyzuo.wallet.baselib.BaseUtils;
+import com.jackyzuo.wallet.baselib.ZException;
+
 import java.util.Map;
 
 /**
@@ -17,28 +19,12 @@ public class MyUtils extends BaseUtils {
      * @throws Exception
      */
     @Override
-    public Map<String, String> encryptParams(Map<String, String> params) throws Exception {
-        if (params==null || params.size()==0){
-            return super.encryptParams(params);
+    public Map<String, String> encryptParams(Map<String, String> params) throws ZException {
+        if (params==null ){
+            throw new ZException("params 不能为null ");
         }
 
-        String json = toJson(params);
-        String key = getkey(0);
-        params.clear();
-
-        params.put(key,json);
         return params;
-    }
-
-    private String getkey(int num) throws Exception {
-        switch (num){
-            case 0:
-                return "key0";
-            case 1:
-                return "key1";
-            default:
-                throw new Exception("error");
-        }
     }
 
 }

@@ -22,7 +22,7 @@ public class BaseUtils {
 //    }
 
     //混淆前
-    public Map<String, String> encryptParams(Map<String, String> params) throws Exception {
+    public Map<String, String> encryptParams(Map<String, String> params) throws ZException {
         return params;
     }
 
